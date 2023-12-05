@@ -62,7 +62,7 @@ emails_sent_this_hour = 0
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # Set your OpenAI API key (recommended to use environment variable for security reasons)
-openai.api_key = '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'  # Fallback to a default key
+openai.api_key = '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'  # Fallback to a default key
 
 # Specified headers for the requests
 headers = {
@@ -150,35 +150,34 @@ def generate_description(text):
 
 # Function to craft the cold email with a subject and HTML body
 def craft_email(full_name, organization_name, description):
-    
-    # Clean the organization name to remove legal suffixes
+    # Clean and convert the organization name
     clean_org_name = clean_organization_name(organization_name)
-    organization_name = convert_caps_to_title(organization_name)
-    clean_org_name = clean_organization_name(organization_name)
+    organization_name = convert_caps_to_title(clean_org_name)
 
     first_name = full_name.split()[0]
     subject = f"{organization_name} & Red Teaming"
 
-    # Crafting the body text of the email
+    # Crafting the body text
     body_text = (
-    f"{first_name} - We're conversing with cybersecurity professionals to listen to your opinion and feedback on red teaming and tooling.\n\n"
-    f"Given the {description} that {organization_name} offers, I thought this might interest you.\n\n"
-    f"We're developing a platform for attack surface monitoring, and we'd appreciate your feedback. Do you have 15 minutes next week? I'm open next Monday 1 or 2 pm afternoon EST if it may work for you.\n\n"
-    f"Thank you,\n\n"
+        f"{first_name} - We're conversing with cybersecurity professionals to listen to your opinion and feedback on red teaming and tooling.\n\n"
+        f"Given your role and the {description} that {organization_name} offers, I thought this might interest you.\n\n"
+        f"We're developing a platform for attack surface monitoring, and we'd appreciate your feedback. If interested, do you have 15 minutes next week? I'm open next Monday 1 or 2 pm afternoon EST if it may work for you.\n\n"
+        f"Thank you,\n\n"
     )
 
     # Preparing the description for HTML format
     description_html = description.replace('\n', '<br>')
 
-    # Creating the HTML version of the email body
+    # Crafting the HTML version of the email body
     body_html = (
         f"<div>{first_name} - We're conversing with cybersecurity professionals to listen to your opinion and feedback on red teaming and tooling.</div><div><br></div>"
-        f"<div>Given the {description} that {organization_name} offers, I thought this might interest you</div><div><br></div>"
-        f"<div>We're developing a platform for attack surface monitoring, and we'd appreciate your feedback. Do you have 15 minutes next week? I'm open next Monday 1 or 2 pm afternoon EST if it may work for you.</div><div><br></div>"
+        f"<div>Given your role and the {description_html}  that {organization_name} offers, I thought this might interest you.</div><div><br></div>"
+        f"<div>We're developing a platform for attack surface monitoring, and we'd appreciate your feedback. If interested, do you have 15 minutes next week? I'm open next Monday 1 or 2 pm afternoon EST if it may work for you.</div><div><br></div>"
         f"<div>Thank you,</div>"
     )
 
     return subject, body_text, body_html
+
 
 
 # Function to schedule an email
@@ -219,7 +218,7 @@ def schedule_email(email_id, schedule_time):
 
 # Main execution logic
 try:
-    total_emails_to_send = 1 * 3   # 20 emails for 5 hours
+    total_emails_to_send = 20 * 5   # 20 emails for 5 hours
     email_count = 0
 
     for contact_index, contact in enumerate(contacts):
