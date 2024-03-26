@@ -62,15 +62,15 @@ emails_sent_this_hour = 0
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # Set your OpenAI API key (recommended to use environment variable for security reasons)
-openai.api_key = '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'  # Fallback to a default key
+openai.api_key = ''  # Fallback to a default key
 
 # Specified headers for the requests
 headers = {
         'Content-Length': '217',
         'Content-Type': 'application/json',
-        'X-Csrf-Token': 'iJUD1tPIl4ppUISam4fX5oGLY4h4rVqARDrJFOTRsFA7iPOx3tNzmKTx744unepop7ow6LGg9wPuxpMaCSLHaw',
+        'X-Csrf-Token': 'coffee',
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36',
-        'Cookie': 'remember_token_leadgenie_v2=eyJfcmFpbHMiOnsibWVzc2FnZSI6IklqWTBZalZsTldRell6STBaREUzTURCaE0yRTJNREJrTTE5c1pXRmtaMlZ1YVdWamIyOXJhV1ZvWVhOb0lnPT0iLCJleHAiOiIyMDIzLTEyLTA5VDIzOjExOjQyLjkwNVoiLCJwdXIiOiJjb29raWUucmVtZW1iZXJfdG9rZW5fbGVhZGdlbmllX3YyIn19--5ecf86a49c81e2010bece4837b374c73728776a3; iJUD1tPIl4ppUISam4fX5oGLY4h4rVqARDrJFOTRsFA7iPOx3tNzmKTx744unepop7ow6LGg9wPuxpMaCSLHaw; _leadgenie_session=17e5kinSWhqycF2Kw6tVxzVIcKA%2FLxO1YyLlbNup3UhSfVIrwH%2BjM4N2E4Qd%2BAF3MPNim217SjWjjkq4MhA7qj8eUNoCxWiq67ef0AEhiVy07e1JpoYN3KiBOmYN9IeFpIu3bnWrXT48VmW2%2BSlpyshBJ%2FST7tmIzb0kuXFx%2BetYrCJkBLnPzL9tWpltkzUgwlj9PY1weJcdWZLXzfCBO5ioGGZkimWOrpi3RrTVzgkJqYXtmPZ59h3aCEXCtkvmjgwbQL7mw2u6bBysGtjYoW4jyNlsl7Tol44%3D--3oOoBiDmXQ6pn8Qf--0UUk2%2BVrPn0nExvUhOkRjA%3D%3D'
+        'Cookie': 'coffee'
     }
 
 # URL for the POST and PUT requests
